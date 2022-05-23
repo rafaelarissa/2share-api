@@ -7,6 +7,11 @@ async function create(createPlaylistData: CreatePlaylistData) {
   });
 }
 
+async function findMany() {
+  return prisma.playlist.findMany();
+}
+
 export const playlistRepository = {
   create,
+  findMany,
 };

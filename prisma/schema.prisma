@@ -11,8 +11,8 @@ model Playlist {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   title       String
-  icon        String
-  description String
+  icon        String?
+  description String?
 
   @@map("playlists")
 }
