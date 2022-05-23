@@ -3,7 +3,7 @@ import { playlistController } from "../controllers/playlistController.js";
 
 const playlistRouter = Router();
 
-playlistRouter.post("/playlist", playlistController.insert);
+playlistRouter.post("/playlists", playlistController.insert);
 // playlistRouter.get("/");
 
 export default playlistRouter;

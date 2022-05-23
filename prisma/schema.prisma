@@ -13,4 +13,6 @@ model Playlist {
   title       String
   icon        String
   description String
+
+  @@map("playlists")
 }
