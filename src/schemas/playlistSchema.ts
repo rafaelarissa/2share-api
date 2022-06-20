@@ -3,7 +3,7 @@ import { CreatePlaylistData } from "../services/playlistService.js";
 
 export const playlistSchema = joi.object<CreatePlaylistData>({
   title: joi.string().required(),
-  icon: joi.string().optional(),
-  description: joi.string().optional(),
+  icon: joi.string(),
+  description: joi.string(),
   createdAt: joi.date(),
 });
