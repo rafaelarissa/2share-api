@@ -4,12 +4,6 @@ import { playlistSchema } from "../schemas/playlistSchema.js";
 import { wrongSchemaError } from "../utils/errorUtils.js";
 
 async function insert(req: Request, res: Response) {
-  const validation = playlistSchema.validate(req.body);
-  if (validation.error) {
-    console.log(validation.error.message);
-    throw wrongSchemaError();
-  }
-
   await playlistService.insert(req.body);
 
   res.sendStatus(201);
