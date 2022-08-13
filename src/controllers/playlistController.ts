@@ -6,6 +6,7 @@ import { wrongSchemaError } from "../utils/errorUtils.js";
 async function insert(req: Request, res: Response) {
   const validation = playlistSchema.validate(req.body);
   if (validation.error) {
+    console.log(validation.error.message);
     throw wrongSchemaError();
   }
 
@@ -19,7 +20,16 @@ async function get(req: Request, res: Response) {
   res.send(playlists);
 }
 
+async function getById(req: Request, res: Response) {
+  const { id } = req.params;
+
+  const playlist = await playlistService.getPlaylistById(+id);
+
+  res.send(playlist);
+}
+
 export const playlistController = {
   insert,
   get,
+  getById,
 };
