@@ -7,14 +7,6 @@ async function insert(req: Request, res: Response) {
   res.sendStatus(201);
 }
 
-async function addTrackToPlaylist(req: Request, res: Response) {
-  const { playlistId } = req.params;
-
-  await playlistService.addTrackToPlaylist(req.body);
-
-  res.sendStatus(201);
-}
-
 async function get(req: Request, res: Response) {
   const playlists = await playlistService.get();
   res.send(playlists);
@@ -32,5 +24,4 @@ export const playlistController = {
   insert,
   get,
   getById,
-  addTrackToPlaylist,
 };

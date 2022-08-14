@@ -12,6 +12,5 @@ playlistRouter.post(
 );
 playlistRouter.get("/playlists", playlistController.get);
 playlistRouter.get("/playlist/:id", playlistController.getById);
-playlistRouter.post("/playlist/:id", playlistController.addTrackToPlaylist);
 
 export default playlistRouter;
