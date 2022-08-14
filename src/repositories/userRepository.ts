@@ -1,5 +1,5 @@
-import { prisma } from "../database";
-import { CreateUserData } from "../services/userService";
+import { prisma } from "../database.js";
+import { CreateUserData } from "../services/userService.js";
 
 async function create(createUserData: CreateUserData) {
   return prisma.user.create({

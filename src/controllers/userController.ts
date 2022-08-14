@@ -1,4 +1,4 @@
-import { userService } from "./../services/userService";
+import { userService } from "./../services/userService.js";
 import { Request, Response } from "express";
 
 async function signUp(req: Request, res: Response) {

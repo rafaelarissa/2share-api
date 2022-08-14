@@ -1,10 +1,10 @@
-import { userRepository } from "./../repositories/userRepository";
+import { userRepository } from "./../repositories/userRepository.js";
 import { User } from "@prisma/client";
 import {
   conflictError,
   notFoundError,
   unauthorizedError,
-} from "../utils/errorUtils";
+} from "../utils/errorUtils.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
