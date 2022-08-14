@@ -7,12 +7,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  username String @unique
+  password String
+
+  @@map("users")
+}
+
 model Playlist {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  title       String
-  icon        String?
-  description String?
+  id            Int             @id @default(autoincrement())
+  createdAt     DateTime        @default(now())
+  title         String
+  icon          String?
+  description   String?
+  TrackPlaylist TrackPlaylist[]
 
   @@map("playlists")
+}
+
+model Track {
+  id            Int             @id @default(autoincrement())
+  trackAPIId    String
+  TrackPlaylist TrackPlaylist[]
+
+  @@map("tracks")
+}
+
+model TrackPlaylist {
+  id         Int      @id @default(autoincrement())
+  Track      Track?   @relation(fields: [trackId], references: [id])
+  trackId    Int?
+  Playlist   Playlist @relation(fields: [playlistId], references: [id])
+  playlistId Int
+
+  @@map("tracksPlaylists")
 }

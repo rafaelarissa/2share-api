@@ -1,10 +1,15 @@
-import { Playlist } from ".prisma/client";
+import { Playlist, TrackPlaylist } from ".prisma/client";
 import { playlistRepository } from "../repositories/playlistRepository.js";
 import { notFoundError } from "../utils/errorUtils.js";
 export type CreatePlaylistData = Omit<Playlist, "id">;
+export type CreateTrackPlaylist = Omit<TrackPlaylist, "id">;
 
 async function insert(createPlaylistData: CreatePlaylistData) {
   await playlistRepository.create(createPlaylistData);
+}
+
+async function addTrackToPlaylist(createTrackPlaylist: CreateTrackPlaylist) {
+  await playlistRepository.addTrackToPlaylist(createTrackPlaylist);
 }
 
 async function get() {
@@ -23,4 +28,5 @@ export const playlistService = {
   insert,
   get,
   getPlaylistById,
+  addTrackToPlaylist,
 };

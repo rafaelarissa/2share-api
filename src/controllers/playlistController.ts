@@ -1,10 +1,16 @@
 import { Request, Response } from "express";
 import { playlistService } from "../services/playlistService.js";
-import { playlistSchema } from "../schemas/playlistSchema.js";
-import { wrongSchemaError } from "../utils/errorUtils.js";
 
 async function insert(req: Request, res: Response) {
   await playlistService.insert(req.body);
+
+  res.sendStatus(201);
+}
+
+async function addTrackToPlaylist(req: Request, res: Response) {
+  const { playlistId } = req.params;
+
+  await playlistService.addTrackToPlaylist(req.body);
 
   res.sendStatus(201);
 }
@@ -26,4 +32,5 @@ export const playlistController = {
   insert,
   get,
   getById,
+  addTrackToPlaylist,
 };
