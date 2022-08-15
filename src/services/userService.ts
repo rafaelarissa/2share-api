@@ -7,6 +7,9 @@ import {
 } from "../utils/errorUtils.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export type CreateUserData = Omit<User, "id">;
 
@@ -15,8 +18,8 @@ async function signUp(createUserData: CreateUserData) {
   const existingUsername = await userRepository.findByUsername(
     createUserData.username
   );
-  if (existingEmail) throw conflictError("Email must be unique");
-  if (existingUsername) throw conflictError("Username must be unique");
+  if (existingEmail) throw conflictError("Email already in use");
+  else if (existingUsername) throw conflictError("Username already in use");
 
   const hashedPassword = bcrypt.hashSync(createUserData.password, 12);
 
