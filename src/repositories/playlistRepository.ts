@@ -15,8 +15,13 @@ async function findById(id: number) {
   return prisma.playlist.findUnique({ where: { id } });
 }
 
+async function getByUserId(userId: number) {
+  return prisma.playlist.findMany({ where: { userId } });
+}
+
 export const playlistRepository = {
   create,
   findMany,
   findById,
+  getByUserId,
 };

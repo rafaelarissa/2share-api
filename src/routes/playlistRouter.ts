@@ -20,7 +20,7 @@ playlistRouter.get(
 playlistRouter.get(
   "/playlist/:id",
   ensureAuthenticatedMiddleware,
-  playlistController.getById
+  playlistController.get
 );
 
 export default playlistRouter;
